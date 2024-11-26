@@ -31,6 +31,7 @@ SEPOLIA = 'sepolia'
 HOLESKY = 'holesky'
 MEKONG = 'mekong'
 EPHEMERY = 'ephemery'
+CYTONIC_TESTNET = 'cytonic-testnet'
 
 # Mainnet setting
 MainnetSetting = BaseChainSetting(
@@ -66,6 +67,12 @@ EphemerySetting = BaseChainSetting(
     # You can manually obtain the GENESIS_VALIDATORS_ROOT with each reset on
     # https://github.com/ephemery-testnet/ephemery-genesis/releases
     GENESIS_VALIDATORS_ROOT=None)
+    
+# ---=== CUSTOM CHAIN SETTINGS ===---
+# Cytonic testnet setting
+CytonicTestnetSetting = BaseChainSetting(
+    NETWORK_NAME=CYTONIC_TESTNET, GENESIS_FORK_VERSION=bytes.fromhex('10000000'),
+    GENESIS_VALIDATORS_ROOT=bytes.fromhex('d63d05b04d3d53ff5ae70af9c49d99d6a3d9f3c462abf00d494870a66899f413'))
 
 
 ALL_CHAINS: Dict[str, BaseChainSetting] = {
@@ -74,6 +81,7 @@ ALL_CHAINS: Dict[str, BaseChainSetting] = {
     HOLESKY: HoleskySetting,
     MEKONG: MekongSetting,
     EPHEMERY: EphemerySetting,
+    CYTONIC_TESTNET: CytonicTestnetSetting,
 }
 
 ALL_CHAIN_KEYS: tuple[str, ...] = tuple(ALL_CHAINS.keys())
